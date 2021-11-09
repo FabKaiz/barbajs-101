@@ -47,6 +47,13 @@ barba.init({
       beforeEnter() {
         console.log('beforeEnter');
       },
+    }, {
+      name: 'cover',
+      to: {
+        namespace: ['cover'],
+      },
+      leave() {},
+      enter() {},
     },
   ],
 });
