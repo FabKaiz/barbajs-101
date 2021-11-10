@@ -1,8 +1,27 @@
 import barba from '@barba/core';
 import barbaPrefetch from '@barba/prefetch';
+import barbaRouter from '@barba/router';
 import gsap from 'gsap';
 
 import { animationEnter, animationLeave, revealProject, leaveToProject, leaveFromProject } from './animations';
+
+// define your routes
+const myRoutes = [{
+  path: '/index.html',
+  name: 'home',
+}, {
+  path: '/architecture.html',
+  name: 'architecture',
+}, {
+  path: '/detail-page.html',
+  name: 'detail',
+},
+];
+
+// tell Barba to use the router with your routes
+barba.use(barbaRouter, {
+  routes: myRoutes,
+});
 
 // tell Barba to use the prefetch plugin
 // It prefetch every links in the viewport
@@ -65,7 +84,7 @@ barba.init({
     }, {
       name: 'from-detail',
       from: {
-        namespace: ['detail'],
+        route: ['detail'],
       },
       leave: ({ current }) => leaveFromProject(current.container),
       enter({ next }) {
