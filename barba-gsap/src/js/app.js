@@ -8,7 +8,26 @@ const resetActiveLinks = () => gsap.set('a.is-active span', {
   transformOrigin: 'left',
 });
 
+barba.hooks.enter(() => {
+
+  // console.log('enter');
+  window.scrollTo(0, 0);
+});
+
+barba.hooks.after(() => {
+
+  // console.log('after transition');
+});
+
 barba.init({
+  views: [ // Use views to enbale Javascript or plugins on specific pages before or after transition
+    {
+      namespace: 'architecture',
+      beforeEnter: (data) => {
+        console.log(data, 'beforeenter architecture');
+      },
+    },
+  ],
   transitions: [
     {
       name: 'detail',
@@ -36,7 +55,6 @@ barba.init({
       },
       leave: ({ current }) => animationLeave(current.container),
       enter({ next }) {
-        console.log('entering');
         animationEnter(next.container);
       },
     }, {
