@@ -15,11 +15,23 @@ const revealProject = (container) => {
   });
   tl
     .set(hero, { autoAlpha: 1 })
-    .from(images, { xPercent: -101, stagger: 0.1 }, 0)
-    .from(img, { xPercent: 101, stagger: 0.1 }, 0)
-    .from(h1, { xPercent: 70, autoAlpha: 0 }, 0)
+    .from(images, {
+      xPercent: -101,
+      stagger: 0.1,
+    }, 0)
+    .from(img, {
+      xPercent: 101,
+      stagger: 0.1,
+    }, 0)
+    .from(h1, {
+      xPercent: 70,
+      autoAlpha: 0,
+    }, 0)
     .from(headerLink, { yPercent: 100 }, 0)
-    .from(content, { autoAlpha: 0, y: 20 }, 0.2);
+    .from(content, {
+      autoAlpha: 0,
+      y: 20,
+    }, 0.2);
   return tl;
 };
 

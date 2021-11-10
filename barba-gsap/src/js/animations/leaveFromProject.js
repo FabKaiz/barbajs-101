@@ -13,9 +13,18 @@ const leaveFromProject = (container) => {
   });
   tl
     .to(headerLink, { yPercent: 101 }, 0)
-    .to(projects, { xPercent: 100, stagger: 0.05 }, 0)
-    .to(content, { autoAlpha: 0, ease: 'none' }, 0)
-    .to(images, { xPercent: -100, stagger: 0.05 }, 0);
+    .to(projects, {
+      xPercent: 100,
+      stagger: 0.05,
+    }, 0)
+    .to(content, {
+      autoAlpha: 0,
+      ease: 'none',
+    }, 0)
+    .to(images, {
+      xPercent: -100,
+      stagger: 0.05,
+    }, 0);
   return tl;
 };
 
