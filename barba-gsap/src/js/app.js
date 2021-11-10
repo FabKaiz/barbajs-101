@@ -1,7 +1,7 @@
 import barba from '@barba/core';
 import gsap from 'gsap';
 
-import { animationEnter, animationLeave } from './animations';
+import { animationEnter, animationLeave, revealProject, leaveToProject, leaveFromProject } from './animations';
 
 const resetActiveLinks = () => gsap.set('a.is-active span', {
   xPercent: -100,
@@ -11,6 +11,20 @@ const resetActiveLinks = () => gsap.set('a.is-active span', {
 barba.init({
   transitions: [
     {
+      name: 'detail',
+      to: {
+        namespace: ['detail'],
+      },
+      once({ next }) {
+        revealProject(next.container);
+      },
+      leave: ({ current }) => leaveToProject(current.container),
+      enter({ next }) {
+        revealProject(next.container);
+      },
+    },
+    {
+      name: 'general-transition',
       once({ next }) {
         resetActiveLinks();
         gsap.from('header a', {
